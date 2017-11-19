@@ -12,10 +12,13 @@ RUN useradd -u 9000 app && \
     mkdir /usr/src/collector && \
     chown -R app:app /usr/src/collector
 
+COPY ["requirements.txt", "/tmp/"]
+RUN pip install -r /tmp/requirements.txt && rm -rf /tmp/requirements.txt
+
 # run everything from here on as non-root
 USER app
 
-ADD entrypoint.py /usr/src/collector
+COPY ["entrypoint.py", "/usr/src/collector/"]
 
 WORKDIR /repo
 
