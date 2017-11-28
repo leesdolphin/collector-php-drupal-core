@@ -23,3 +23,5 @@ COPY ["entrypoint.py", "/usr/src/collector/"]
 WORKDIR /repo
 
 ENTRYPOINT ["python", "/usr/src/collector/entrypoint.py"]
+
+LABEL io.dependencies.allow-write="False"
